@@ -1,0 +1,357 @@
+:root {
+  --paper: #eee7d8;
+  --paper-light: #f7f3ea;
+  --ink: #3f392f;
+  --muted-ink: #766d60;
+  --line: rgba(86, 74, 59, .28);
+  --accent: #7f483a;
+  --header-height: 72px;
+}
+
+* { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: var(--paper); }
+body { color: var(--ink); font-family: "Noto Serif SC", "Songti SC", SimSun, serif; }
+a { color: inherit; text-decoration: none; }
+button, a { -webkit-tap-highlight-color: transparent; }
+
+.site-shell { display: flex; flex-direction: column; width: 100vw; height: 100vh; height: 100dvh; overflow: hidden; }
+.site-header { display: flex; flex: 0 0 var(--header-height); align-items: center; justify-content: space-between; width: 100%; height: var(--header-height); gap: 28px; padding: 0 clamp(24px, 4vw, 72px); border-bottom: 1px solid var(--line); background: rgba(247, 243, 234, .94); }
+.audio-control { display: inline-flex; flex: 0 0 auto; align-items: center; gap: 5px; padding: 5px 8px; border: 1px solid rgba(94,69,47,.32); background: rgba(245,238,222,.58); color: #5a4030; font-family: "Songti SC", SimSun, serif; font-size: 12px; letter-spacing: .08em; cursor: pointer; transition: background-color .2s ease, color .2s ease; }
+.audio-control:hover, .audio-control:focus-visible, .audio-control.is-playing { background: rgba(87,61,42,.86); color: #f7ecd5; outline: none; }
+.audio-control.is-playing > span:first-child { animation: audio-note-breathe 1.4s ease-in-out infinite; }
+@keyframes audio-note-breathe { 0%, 100% { opacity: .55; transform: translateY(1px); } 50% { opacity: 1; transform: translateY(-1px); } }
+.brand-meta { margin: 0 0 4px; color: var(--muted-ink); font-family: Arial, sans-serif; font-size: 10px; letter-spacing: .16em; }
+.brand-title { display: flex; align-items: center; gap: 10px; margin: 0; font-size: 19px; font-weight: 500; letter-spacing: .06em; white-space: nowrap; }
+.brand-title::before { width: 1px; height: 20px; background: var(--accent); content: ""; }
+.site-nav { display: flex; align-items: center; gap: clamp(14px, 2.2vw, 32px); font-size: 15px; white-space: nowrap; }
+.site-nav a { position: relative; padding: 27px 0 24px; color: var(--muted-ink); transition: color .18s ease; }
+.site-nav a::after { position: absolute; right: 0; bottom: 17px; left: 0; height: 1px; background: var(--accent); content: ""; opacity: 0; transform: scaleX(.4); transition: opacity .18s ease, transform .18s ease; }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--ink); }
+.site-nav a:hover::after, .site-nav a[aria-current="page"]::after { opacity: 1; transform: scaleX(1); }
+.nav-placeholder { padding: 27px 0 24px; color: rgba(118, 109, 96, .55); cursor: default; }
+
+.home-page { position: relative; display: flex; flex: 1 1 auto; align-items: center; min-width: 0; min-height: 0; padding: clamp(32px, 7vh, 78px) clamp(40px, 7vw, 136px); overflow: hidden; background: var(--paper); }
+.home-map { position: absolute; inset: 0; z-index: 0; display: grid; place-items: center; margin: 0; pointer-events: none; }
+.home-map img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; }
+.home-intro { position: relative; z-index: 1; width: min(31vw, 455px); min-width: 330px; }
+h1 { margin: 0; font-size: clamp(42px, 4.4vw, 70px); font-weight: 500; letter-spacing: .1em; line-height: 1.15; }
+.home-copy { max-width: 430px; margin: clamp(20px, 3vh, 32px) 0 0; color: var(--muted-ink); font-size: clamp(13px, 1vw, 15px); line-height: 1.95; text-align: justify; }
+.ink-button { display: inline-flex; gap: 22px; align-items: center; margin-top: clamp(22px, 4vh, 40px); padding: 13px 18px; border: 1px solid #24231f; background: #24231f; color: #f3eedf; font-size: 15px; letter-spacing: .08em; transition: color .18s ease, background-color .18s ease, border-color .18s ease; }
+.ink-button:hover { background: #1e1d1a; border-color: #1e1d1a; color: #f3eedf; }
+.ink-button:active { background: #722d27; border-color: #722d27; color: #f3eedf; }
+.ink-button:focus-visible { outline: 2px solid #722d27; outline-offset: 3px; }
+
+.page-content { display: grid; flex: 1 1 auto; grid-template-columns: minmax(235px, .7fr) minmax(560px, 1.3fr); gap: clamp(42px, 7vw, 132px); align-items: center; min-width: 0; min-height: 0; padding: clamp(28px, 5vh, 62px) clamp(48px, 8vw, 150px); overflow: hidden; }
+.page-heading { align-self: center; border-right: 1px solid var(--line); padding: 12px clamp(28px, 5vw, 82px) 12px 0; }
+.eyebrow { margin: 0 0 18px; color: var(--accent); font-size: 13px; letter-spacing: .2em; }
+.page-heading h1 { font-size: clamp(38px, 4vw, 60px); }
+.page-heading > p:last-child { margin: 18px 0 0; color: var(--muted-ink); letter-spacing: .12em; }
+.chapter-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, minmax(0, 1fr)); align-self: stretch; gap: 0 clamp(26px, 4vw, 64px); min-width: 0; margin: 0; padding: 0; list-style: none; }
+.chapter-item { display: grid; grid-template-columns: 54px minmax(0, 1fr) auto; gap: 14px; align-items: center; min-width: 0; padding: 13px 4px; border-bottom: 1px solid var(--line); color: var(--muted-ink); }
+.chapter-item--available { color: var(--ink); }
+.chapter-item--available a { display: grid; grid-column: 1 / -1; grid-template-columns: 54px minmax(0, 1fr) auto; gap: 14px; align-items: center; min-width: 0; }
+.chapter-number { color: var(--accent); font-size: clamp(24px, 2vw, 30px); }
+.chapter-item strong, .chapter-item small { display: block; }
+.chapter-item strong { font-size: clamp(17px, 1.25vw, 20px); font-weight: 500; letter-spacing: .08em; }
+.chapter-item small { margin-top: 6px; font-size: 12px; letter-spacing: .1em; }
+.chapter-item em { font-size: 11px; font-style: normal; letter-spacing: .08em; white-space: nowrap; }
+.chapter-arrow { color: var(--accent); font-size: 20px; transition: transform .2s ease; }
+.chapter-item--available a:hover .chapter-arrow { transform: translateX(6px); }
+
+.chapter-page { display: flex; flex: 1 1 auto; min-width: 0; min-height: 0; overflow: hidden; background: #d5c5ad; }
+.mounting-panel { position: relative; flex: 0 0 clamp(180px, 15vw, 310px); min-width: 0; overflow: hidden; background-color: #d8d0b6; background-image: url("../原画素材/锦纹底纹.png"); background-repeat: repeat; background-position: center top; background-size: 512px 512px; }
+.mounting-panel--left { box-shadow: inset -18px 0 22px -24px rgba(77, 62, 47, .8); }
+.mounting-panel--right { box-shadow: inset 18px 0 22px -24px rgba(77, 62, 47, .8); }
+.scroll-title { position: absolute; top: 18%; left: 50%; margin: 0; color: #584334; font-family: "Songti SC", SimSun, serif; font-size: clamp(20px, 1.65vw, 31px); font-weight: 500; letter-spacing: .32em; line-height: 1.3; text-orientation: upright; writing-mode: vertical-rl; transform: translateX(-50%); }
+.painting-frame { display: flex; flex: 1 1 auto; align-items: center; justify-content: center; min-width: 0; min-height: 0; margin: 0; overflow: hidden; }
+.painting-stage { position: relative; width: 100%; height: 100%; overflow: hidden; cursor: grab; touch-action: none; }
+.painting-stage:active { cursor: grabbing; }
+.chapter-artwork { position: absolute; display: block; max-width: none; max-height: none; user-select: none; -webkit-user-drag: none; }
+.hotspot-layer { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.painting-hotspot { position: absolute; display: grid; width: 16px; height: 16px; place-items: center; padding: 0; border: 1px solid rgba(255, 255, 255, .96); border-radius: 50%; background: rgba(255, 255, 255, .2); box-shadow: 0 0 9px rgba(255, 255, 255, .56); color: rgba(255, 255, 255, .98); cursor: pointer; opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1); transition: opacity .2s ease, filter .18s ease, background-color .2s ease, border-color .2s ease; animation: painting-hotspot-breathe 1.2s ease-in-out infinite; }
+.painting-hotspot::before { width: 4px; height: 4px; border-radius: 50%; background: currentColor; content: ""; }
+.painting-hotspot span { position: absolute; bottom: calc(100% + 8px); left: 50%; padding: 4px 7px; background: rgba(50, 40, 31, .72); color: #f8eed2; font-family: "Songti SC", SimSun, serif; font-size: 12px; letter-spacing: .08em; line-height: 1; opacity: 0; pointer-events: none; transform: translateX(-50%); transition: opacity .18s ease; white-space: nowrap; }
+.painting-hotspot:hover, .painting-hotspot:focus-visible { filter: brightness(1.18); background: rgba(255, 255, 255, .23); outline: none; }
+.painting-hotspot:hover span, .painting-hotspot:focus-visible span { opacity: 1; }
+.painting-hotspot.is-explored { border-color: rgba(255, 255, 255, .94); background: rgba(255, 255, 255, .12); box-shadow: 0 0 7px rgba(255, 255, 255, .34); color: rgba(255, 255, 255, .98); opacity: 1; }
+.painting-hotspot--archive { animation: archive-hotspot-in .7s ease both, painting-hotspot-breathe 1.2s ease-in-out .7s infinite; }
+.painting-hotspot[hidden] { display: none; }
+.painting-stage[data-phase="character"] .hotspot-layer { pointer-events: none; }
+.painting-stage[data-phase="character"] .painting-hotspot { opacity: .25; }
+.character-dim { position: absolute; z-index: 3; inset: 0; width: 100%; height: 100%; border: 0; background: rgba(39, 28, 20, .63); cursor: pointer; opacity: 1; transition: opacity .3s ease; -webkit-mask-image: radial-gradient(ellipse var(--focus-rx) var(--focus-ry) at var(--focus-x) var(--focus-y), transparent 0, transparent 42%, rgba(0, 0, 0, .18) 61%, #000 100%); mask-image: radial-gradient(ellipse var(--focus-rx) var(--focus-ry) at var(--focus-x) var(--focus-y), transparent 0, transparent 42%, rgba(0, 0, 0, .18) 61%, #000 100%); }
+.character-panel { position: absolute; z-index: 5; margin: 0; padding: 0; border: 0; background: transparent; box-shadow: none; color: #f4ead1; font-size: clamp(15px, 1.25vw, 19px); line-height: 2; text-shadow: 0 1px 3px rgba(30, 22, 16, .88); animation: reading-fade-in .3s ease both; }
+.character-panel p { margin: 0; }
+.character-panel p + p { margin-top: 1.1em; }
+.archive-unlock-notice { position: absolute; z-index: 6; top: 14%; left: 50%; margin: 0; padding: 13px 22px; border: 1px solid rgba(183, 132, 79, .62); background: rgba(67, 48, 34, .76); color: #f0dfb9; font-size: 15px; letter-spacing: .14em; transform: translateX(-50%); animation: archive-notice-in .6s ease both; white-space: nowrap; }
+.chapter-continue { position: absolute; z-index: 7; right: clamp(24px, 4vw, 68px); bottom: clamp(24px, 5vh, 60px); padding: 10px 20px; border: 1px solid rgba(83, 59, 39, .62); background: rgba(240, 231, 211, .9); color: #513a2a; font-family: "Songti SC", SimSun, serif; font-size: 14px; letter-spacing: .18em; cursor: pointer; transition: background-color .18s ease, color .18s ease; }
+.chapter-continue:hover, .chapter-continue:focus-visible { background: #5c4030; color: #f5ead5; outline: none; }
+.character-dim[hidden], .character-panel[hidden], .archive-unlock-notice[hidden] { display: none; }
+@keyframes reading-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes archive-hotspot-in { from { opacity: 0; transform: translate(-50%, -50%) scale(.6); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+@keyframes painting-hotspot-breathe { 0%, 100% { background: rgba(255,255,255,.13); box-shadow: 0 0 5px rgba(255,255,255,.3); opacity: .68; transform: translate(-50%, -50%) scale(.82); } 50% { background: rgba(255,255,255,.52); box-shadow: 0 0 15px rgba(255,255,255,.82); opacity: 1; transform: translate(-50%, -50%) scale(1.48); } }
+@keyframes archive-notice-in { from { opacity: 0; transform: translate(-50%, -7px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+@media (max-width: 1050px) {
+  .site-header { gap: 18px; padding-inline: 24px; }
+  .site-nav { gap: 14px; font-size: 14px; }
+  .home-intro { min-width: 290px; }
+  .page-content { grid-template-columns: minmax(210px, .62fr) minmax(490px, 1.38fr); gap: 34px; padding-inline: 42px; }
+}
+
+@media (max-width: 760px) {
+  html, body { overflow: auto; }
+  .site-shell { height: auto; min-height: 100vh; min-height: 100dvh; overflow: visible; }
+  .site-header { position: relative; flex: 0 0 auto; height: auto; flex-direction: column; align-items: flex-start; gap: 8px; padding: 18px 24px 0; }
+  .site-nav { width: 100%; justify-content: space-between; gap: 8px; overflow-x: auto; }
+  .site-nav a, .nav-placeholder { padding: 13px 0 16px; }
+  .site-nav a::after { bottom: 8px; }
+  .home-page { min-height: 640px; padding: 54px 24px; }
+  .home-intro { width: min(100%, 430px); min-width: 0; }
+  .page-content { display: block; min-height: 640px; padding: 48px 24px; overflow: visible; }
+  .page-heading { border-right: 0; border-bottom: 1px solid var(--line); padding: 0 0 24px; }
+  .chapter-list { display: grid; grid-template-rows: none; margin-top: 16px; }
+  .chapter-item { min-height: 78px; }
+  .mounting-panel { flex-basis: 18vw; }
+}
+
+/* 第二章：横向画卷与局部档案阅读 */
+.chapter-two { position: relative; flex: 1 1 auto; min-width: 0; min-height: 0; overflow: hidden; background: #d5c5ad; }
+.chapter-two__scene { position: relative; width: 100%; height: 100%; overflow: hidden; cursor: grab; touch-action: pan-y; }
+.chapter-two__scene:active { cursor: grabbing; }
+.chapter-two__art { position: absolute; top: 0; display: block; max-width: none; max-height: none; user-select: none; -webkit-user-drag: none; }
+.chapter-two__hotspots { position: absolute; z-index: 2; inset: 0; pointer-events: none; }
+.chapter-two__hotspot { position: absolute; width: 18px; height: 18px; padding: 0; border: 1px solid rgba(255,255,255,.96); border-radius: 50%; background: rgba(255,255,255,.2); box-shadow: 0 0 9px rgba(255,255,255,.56); color: #fff; cursor: pointer; pointer-events: auto; transform: translate(-50%, -50%) scale(1); transition: background-color .2s ease, opacity .2s ease; animation: chapter-two-hotspot-breathe 1.2s ease-in-out infinite; }
+.chapter-two__hotspot::after { position: absolute; inset: 5px; border-radius: 50%; background: currentColor; content: ""; }
+.chapter-two__hotspot:hover, .chapter-two__hotspot:focus-visible { background: rgba(255,255,255,.42); outline: none; }
+.chapter-two__hotspot.is-explored { border-color: rgba(255,255,255,.94); background: rgba(255,255,255,.1); box-shadow: 0 0 9px rgba(255,255,255,.42); color: #fff; opacity: 1; }
+.chapter-two__hotspot--gateway { width: auto; height: auto; padding: 11px 15px; border-color: rgba(91,61,38,.7); border-radius: 0; background: rgba(244,235,211,.92); box-shadow: 0 2px 14px rgba(55,38,24,.18); color: #4c3829; font-family: "Songti SC", SimSun, serif; font-size: 14px; letter-spacing: .12em; }
+.chapter-two__hotspot--gateway { animation: none; transform: translate(-50%, -50%); }
+.chapter-two__hotspot--gateway::after { display: none; }
+.chapter-two__dim { position: absolute; z-index: 3; inset: 0; width: 100%; height: 100%; border: 0; background: rgba(38,29,20,.58); cursor: pointer; -webkit-mask-image: radial-gradient(ellipse var(--chapter-two-focus-rx) var(--chapter-two-focus-ry) at var(--chapter-two-focus-x) var(--chapter-two-focus-y), transparent 0, transparent 45%, rgba(0,0,0,.18) 65%, #000 100%); mask-image: radial-gradient(ellipse var(--chapter-two-focus-rx) var(--chapter-two-focus-ry) at var(--chapter-two-focus-x) var(--chapter-two-focus-y), transparent 0, transparent 45%, rgba(0,0,0,.18) 65%, #000 100%); }
+.chapter-two__reading { position: absolute; z-index: 5; right: 0; bottom: 0; left: 0; height: min(68vh, 690px); pointer-events: none; }
+.chapter-two__narrative { position: relative; width: 100%; height: 100%; pointer-events: none; }
+.chapter-two__portrait { position: absolute; z-index: 2; bottom: 0; display: block; width: auto; height: min(48vh, 470px); object-fit: contain; pointer-events: auto; filter: drop-shadow(0 7px 8px rgba(45,30,19,.3)); }
+.chapter-two__reading--emperor .chapter-two__portrait { left: clamp(22px,4vw,82px); height: min(66vh, 680px); object-position: bottom left; animation: portrait-enter-left .58s cubic-bezier(.2,.72,.24,1) both; }
+.chapter-two__reading--official .chapter-two__portrait { right: clamp(22px,4vw,82px); object-position: bottom right; animation: portrait-enter-right .58s cubic-bezier(.2,.72,.24,1) both; }
+.chapter-two__reading--eight .chapter-two__portrait, .chapter-two__reading--carrier .chapter-two__portrait { left: clamp(22px,4vw,82px); width: min(40vw, 580px); height: auto; max-height: min(54vh, 540px); object-position: bottom left; animation: portrait-enter-left .54s cubic-bezier(.2,.72,.24,1) both; }
+.chapter-two__reading--pair .chapter-two__portrait { left: clamp(22px,4vw,82px); width: min(34vw, 500px); height: auto; max-height: min(53vh, 530px); object-position: bottom left; animation: portrait-enter-left .54s cubic-bezier(.2,.72,.24,1) both; }
+.chapter-two__reading--eight .chapter-two__portrait--tamping { animation: portrait-enter-left .54s cubic-bezier(.2,.72,.24,1) both; transform-origin: center bottom; }
+.chapter-two__paper { position: absolute; z-index: 1; right: 0; bottom: 0; left: 0; width: 100%; height: min(36vh, 360px); padding: clamp(18px,2vh,28px) clamp(34px,5vw,96px) 0; background: transparent; color: #403327; isolation: isolate; pointer-events: auto; }
+.chapter-two__paper::before { position: absolute; z-index: -1; inset: 0; background: url("../章节说明/第二章/60dcac792b57f22ec8800b87f76cdf7.jpg") center top / 100% auto no-repeat; content: ""; opacity: .43; }
+.chapter-two__paper-content { position: relative; z-index: 1; width: min(37vw, 640px); max-height: 62%; }
+.chapter-two__reading--emperor .chapter-two__paper-content, .chapter-two__reading--eight .chapter-two__paper-content, .chapter-two__reading--carrier .chapter-two__paper-content, .chapter-two__reading--pair .chapter-two__paper-content { margin-left: auto; margin-right: clamp(28px,7vw,150px); }
+.chapter-two__reading--official .chapter-two__paper-content { margin-left: clamp(28px,7vw,150px); }
+.chapter-two__paper-content.is-swapping { animation: reading-copy-fade .26s ease both; }
+.chapter-two__paper h2, .chapter-two__knowledge h2 { margin: 0 0 10px; font-size: clamp(22px,1.9vw,30px); font-weight: 500; letter-spacing: .13em; }
+.chapter-two__paper p { margin: 0; font-size: clamp(18px,1.4vw,22px); font-weight: 600; line-height: 1.8; text-align: justify; }
+.chapter-two__knowledge { position: absolute; z-index: 6; top: clamp(22px,4vh,52px); right: clamp(22px,5vw,86px); bottom: clamp(22px,4vh,52px); width: min(490px, 42vw); padding: clamp(24px,3vw,46px); overflow-y: auto; border: 0; background: #eee3cc; color: #403126; isolation: isolate; }
+.chapter-two__knowledge::before { position: absolute; z-index: -1; inset: 0; background: url("../章节说明/第二章/60dcac792b57f22ec8800b87f76cdf7.jpg") center / cover no-repeat; content: ""; opacity: .48; }
+.chapter-two__knowledge h2 { margin-top: 18px; }
+.chapter-two__subtitle { margin: -6px 0 24px; color: #806454; font-size: clamp(15px,1.15vw,18px); letter-spacing: .14em; }
+.chapter-two__knowledge section + section { margin-top: 26px; padding-top: 22px; border-top: 1px solid rgba(93,69,47,.26); }
+.chapter-two__knowledge h3 { margin: 0 0 10px; color: #624635; font-size: clamp(17px,1.3vw,20px); font-weight: 500; letter-spacing: .1em; }
+.chapter-two__knowledge p { margin: 0; font-size: clamp(15px,1.15vw,18px); line-height: 1.9; text-align: justify; }
+.chapter-two__knowledge p + p { margin-top: 1em; }
+.chapter-two__hint { position: absolute; z-index: 1; bottom: 16px; left: 50%; margin: 0; padding: 6px 11px; background: rgba(243,235,217,.72); color: rgba(82,62,46,.78); font-size: clamp(13px,1vw,15px); letter-spacing: .08em; pointer-events: none; transform: translateX(-50%); white-space: nowrap; }
+.chapter-two__next { position: absolute; z-index: 7; right: clamp(24px,4vw,72px); bottom: clamp(24px,5vh,60px); padding: 10px 18px; border: 1px solid rgba(83,59,39,.62); background: rgba(240,231,211,.9); color: #513a2a; font-family: "Songti SC", SimSun, serif; font-size: clamp(15px,1.1vw,17px); letter-spacing: .14em; cursor: pointer; transition: background-color .18s ease, color .18s ease; }
+.chapter-two__next:hover, .chapter-two__next:focus-visible { background: #5c4030; color: #f5ead5; outline: none; }
+.chapter-two__reading[hidden], .chapter-two__knowledge[hidden], .chapter-two__dim[hidden] { display: none; }
+@keyframes portrait-enter-left { from { opacity: 0; transform: translate(-9vw, 7vh); } to { opacity: 1; transform: translate(0, 0); } }
+@keyframes portrait-enter-right { from { opacity: 0; transform: translate(9vw, 7vh); } to { opacity: 1; transform: translate(0, 0); } }
+@keyframes chapter-two-hotspot-breathe { 0%, 100% { background: rgba(255,255,255,.13); box-shadow: 0 0 5px rgba(255,255,255,.3); opacity: .68; transform: translate(-50%, -50%) scale(.82); } 50% { background: rgba(255,255,255,.52); box-shadow: 0 0 15px rgba(255,255,255,.82); opacity: 1; transform: translate(-50%, -50%) scale(1.48); } }
+@media (max-width: 900px) { .chapter-two__reading { height: 64vh; } .chapter-two__portrait { height: 43vh; } .chapter-two__reading--emperor .chapter-two__portrait { height: 59vh; } .chapter-two__paper { height: 34vh; padding-inline: 28px; } .chapter-two__paper-content { width: min(50vw, 520px); } .chapter-two__knowledge { width: min(520px, calc(100vw - 48px)); } }
+@keyframes reading-copy-fade { from { opacity: .12; } to { opacity: 1; } }
+
+/* 第三章：自动横向浏览长卷 */
+.chapter-three { position: relative; flex: 1 1 auto; min-width: 0; min-height: 0; overflow: hidden; background: #d4c8b1; }
+.chapter-three__scene { position: relative; width: 100%; height: 100%; overflow: hidden; cursor: ew-resize; touch-action: none; user-select: none; }
+.chapter-three__track { position: absolute; top: 0; will-change: transform; }
+.chapter-three__art { display: block; width: 100%; height: 100%; max-width: none; max-height: none; pointer-events: none; -webkit-user-drag: none; }
+.chapter-three__hotspots { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+.chapter-three__hotspot { position: absolute; display: grid; width: 17px; height: 17px; place-items: center; padding: 0; border: 1px solid rgba(255,255,255,.96); border-radius: 50%; background: rgba(255,255,255,.22); box-shadow: 0 0 9px rgba(255,255,255,.58); color: #fff; cursor: pointer; pointer-events: auto; transform: translate(-50%,-50%) scale(1); transition: background-color .18s ease, box-shadow .18s ease, border-color .18s ease; animation: chapter-three-hotspot-breathe 1.2s ease-in-out infinite; }
+.chapter-three__hotspot::after { width: 4px; height: 4px; border-radius: 50%; background: currentColor; content: ""; }
+.chapter-three__hotspot:hover, .chapter-three__hotspot:focus-visible { background: rgba(255,255,255,.38); outline: none; }
+.chapter-three__hotspot.is-active { border-color: rgba(255,255,255,.98); background: rgba(255,255,255,.3); box-shadow: 0 0 13px rgba(255,255,255,.74); color: #fff; }
+.chapter-three__dim { position: absolute; z-index: 3; inset: 0; width: 100%; height: 100%; border: 0; background: rgba(39,29,20,.54); cursor: pointer; -webkit-mask-image: radial-gradient(ellipse var(--chapter-three-focus-rx) var(--chapter-three-focus-ry) at var(--chapter-three-focus-x) var(--chapter-three-focus-y), transparent 0, transparent 44%, rgba(0,0,0,.18) 63%, #000 100%); mask-image: radial-gradient(ellipse var(--chapter-three-focus-rx) var(--chapter-three-focus-ry) at var(--chapter-three-focus-x) var(--chapter-three-focus-y), transparent 0, transparent 44%, rgba(0,0,0,.18) 63%, #000 100%); }
+.chapter-three__note { position: absolute; z-index: 5; width: min(40vw,500px); margin: 0; padding: 0; border: 0; background: transparent; color: #f7efd9; box-shadow: none; outline: none; text-shadow: 0 1px 3px rgba(30,22,16,.92), 0 0 14px rgba(30,22,16,.46); }
+.chapter-three__note h2 { margin: 0 0 14px; font-size: clamp(18px,1.5vw,24px); font-weight: 500; letter-spacing: .14em; }
+.chapter-three__note p { margin: 0; font-size: clamp(14px,1vw,16px); line-height: 1.9; text-align: justify; white-space: pre-line; }
+.chapter-three__note--with-image { display: grid; grid-template-columns: minmax(420px,1.25fr) minmax(300px,.85fr); gap: 26px; align-items: center; width: min(72vw,1150px); }
+.chapter-three__note-image { display: block; width: 100%; max-height: min(43vh,330px); object-fit: contain; animation: chapter-three-note-image-in .56s cubic-bezier(.2,.72,.24,1) both; }
+.chapter-three__video { position: absolute; z-index: 6; top: 50%; left: 50%; width: min(76vw,980px); transform: translate(-50%,-50%); }
+.chapter-three__video video { display: block; width: 100%; max-height: min(68vh,720px); background: #17130f; object-fit: contain; }
+.chapter-three__video p { margin: 10px 0 0; color: #f7efd9; font-size: 14px; letter-spacing: .06em; text-align: center; text-shadow: 0 1px 3px rgba(30,22,16,.88); }
+.chapter-three__hint { position: absolute; z-index: 1; right: clamp(22px,4vw,72px); bottom: 18px; margin: 0; padding: 6px 10px; background: rgba(243,235,217,.6); color: rgba(82,62,46,.82); font-size: 12px; letter-spacing: .1em; pointer-events: none; }
+.chapter-three__next { position: absolute; z-index: 7; right: clamp(24px,4vw,72px); bottom: clamp(24px,5vh,60px); padding: 10px 18px; border: 1px solid rgba(83,59,39,.62); background: rgba(240,231,211,.9); color: #513a2a; font-family: "Songti SC", SimSun, serif; font-size: 14px; letter-spacing: .14em; cursor: pointer; transition: background-color .18s ease, color .18s ease; }
+.chapter-three__next:hover, .chapter-three__next:focus-visible { background: #5c4030; color: #f5ead5; outline: none; }
+.chapter-three__dim[hidden], .chapter-three__note[hidden], .chapter-three__video[hidden] { display: none; }
+@keyframes chapter-three-hotspot-breathe { 0%, 100% { background: rgba(255,255,255,.13); box-shadow: 0 0 5px rgba(255,255,255,.3); opacity: .68; transform: translate(-50%,-50%) scale(.82); } 50% { background: rgba(255,255,255,.52); box-shadow: 0 0 15px rgba(255,255,255,.82); opacity: 1; transform: translate(-50%,-50%) scale(1.48); } }
+@keyframes chapter-three-note-image-in { from { opacity: 0; transform: translate(-18px,8px); } to { opacity: 1; transform: translate(0,0); } }
+@media (max-width: 900px) { .chapter-three__note { width: min(420px, calc(100vw - 48px)); } }
+
+/* 第三章：南巡挽纤五节点弹窗 */
+.towpath-modal { position: absolute; z-index: 12; inset: 0; display: grid; place-items: center; padding: clamp(22px,4vh,54px) clamp(26px,5vw,84px); background: rgba(33,27,21,.62); }
+.towpath-modal[hidden] { display: none; }
+.towpath-modal__surface { position: relative; display: flex; width: min(1080px,92vw); max-height: min(790px,88vh); flex-direction: column; overflow: hidden; border: 1px solid rgba(205,174,117,.38); background: rgba(63,48,37,.94); color: #eee4d0; box-shadow: 0 18px 48px rgba(20,14,10,.42); }
+.towpath-modal__surface::before { position: absolute; inset: 0; z-index: 0; background: url("../章节说明/第三章/2.jpg") center / cover no-repeat; content: ""; filter: grayscale(1) blur(3px); opacity: .1; pointer-events: none; }
+.towpath-modal__header, .towpath-modal__content, .towpath-modal__footer { position: relative; z-index: 1; }
+.towpath-modal__header { flex: 0 0 auto; padding: clamp(24px,3vw,40px) clamp(30px,5vw,68px) 18px; border-bottom: 1px solid rgba(234,215,172,.18); }
+.towpath-modal__header h2 { margin: 0; color: #f1e4c5; font-size: clamp(26px,2.5vw,40px); font-weight: 600; letter-spacing: .1em; }
+.towpath-modal__eyebrow { margin: 0 0 10px; color: #ceb47d; font-size: clamp(12px,1vw,15px); letter-spacing: .12em; }
+.towpath-modal__close { position: absolute; z-index: 3; top: 14px; right: 18px; width: 36px; height: 36px; border: 0; background: transparent; color: #f1e4c5; font-family: serif; font-size: 30px; line-height: 1; cursor: pointer; }
+.towpath-modal__close:hover, .towpath-modal__close:focus-visible { color: #d49b68; outline: none; transform: scale(1.08); }
+.towpath-modal__progress { position: relative; display: grid; grid-template-columns: repeat(5,1fr); gap: 0; margin-top: 24px; }
+.towpath-modal__progress::before { position: absolute; top: 50%; right: 10%; left: 10%; height: 1px; background: rgba(123,53,42,.58); content: ""; transform: translateY(-50%); }
+.towpath-modal__progress button { position: relative; z-index: 1; justify-self: center; width: 29px; height: 29px; border: 1px solid rgba(178,68,52,.88); border-radius: 50%; background: #5a4435; color: #eadcc3; font-size: 13px; cursor: pointer; transition: color .2s ease, background-color .2s ease, transform .2s ease; }
+.towpath-modal__progress button.is-complete { background: #944032; }
+.towpath-modal__progress button.is-current { background: #d5a850; color: #3e2d20; box-shadow: 0 0 0 3px rgba(213,168,80,.15); transform: scale(1.12); }
+.towpath-modal__progress button.is-next { border-color: rgba(222,183,102,.92); color: #f0d99b; box-shadow: 0 0 9px rgba(215,168,80,.38); animation: towpath-next-pulse 1.6s ease-in-out infinite; }
+.towpath-modal__content { flex: 1 1 auto; min-height: 0; padding: clamp(22px,3vw,42px) clamp(30px,5vw,68px); overflow-y: auto; }
+.towpath-modal__content h3 { margin: 0 0 16px; color: #f1e4c5; font-size: clamp(21px,1.8vw,28px); font-weight: 500; letter-spacing: .1em; }
+.towpath-modal__content p, .towpath-modal__content li { font-size: clamp(14px,1.05vw,17px); line-height: 1.9; }
+.towpath-modal__content p { margin: 0; text-align: justify; }
+.towpath-modal__content p + p { margin-top: 1em; }
+.towpath-modal__content small { display: block; margin-top: 20px; color: #cdbfa3; font-size: 13px; letter-spacing: .06em; }
+.towpath-modal__intro { display: grid; grid-template-columns: minmax(230px,.75fr) minmax(0,1.25fr); gap: clamp(26px,4vw,60px); align-items: center; min-height: 280px; }
+.towpath-modal__intro img { display: block; width: min(100%,330px); max-height: 360px; margin: auto; object-fit: contain; }
+.towpath-modal__center { max-width: 700px; margin: auto; padding: clamp(18px,4vh,54px) 0; }
+.towpath-modal__choices, .towpath-modal__actions { display: grid; gap: 16px; margin-top: 30px; }
+.towpath-modal__choices button, .towpath-modal__action { padding: 14px 20px; border: 1px solid rgba(182,135,78,.66); border-radius: 12px; background: linear-gradient(110deg,rgba(100,67,42,.86),rgba(132,88,51,.82)); color: #f2e5ca; font-family: "Songti SC", SimSun, serif; font-size: 16px; letter-spacing: .06em; cursor: pointer; transition: filter .2s ease, transform .2s ease; }
+.towpath-modal__choices button:hover, .towpath-modal__choices button.is-selected, .towpath-modal__action:hover { filter: brightness(1.17); transform: translateY(-1px); }
+.towpath-modal__branch { max-width: 760px; margin: auto; }
+.towpath-modal__branch h3 { margin-top: 22px; margin-bottom: 5px; color: #dfc181; font-size: 16px; }
+.towpath-modal__branch ul { margin: 7px 0 0; padding-left: 1.3em; }
+.towpath-modal__choice-name { color: #dcb879; }
+.towpath-modal__dialogue { display: grid; grid-template-columns: minmax(140px,.7fr) minmax(300px,1.25fr) minmax(140px,.7fr); gap: clamp(16px,3vw,40px); align-items: end; min-height: 330px; }
+.towpath-modal__dialogue img { width: 100%; max-height: 360px; object-fit: contain; opacity: .42; transition: opacity .25s ease, filter .25s ease; }
+.towpath-modal__dialogue img.is-speaking { opacity: 1; filter: drop-shadow(0 5px 9px rgba(0,0,0,.35)); }
+.towpath-modal__dialogue > div { align-self: center; }
+.towpath-modal__speaker { color: #dcb879; font-size: 17px !important; letter-spacing: .13em; }
+.towpath-modal__line { min-height: 6em; margin-top: 12px !important; font-size: clamp(17px,1.35vw,21px) !important; }
+.towpath-modal__dialogue .towpath-modal__action { margin-top: 24px; }
+.towpath-modal__actions { grid-template-columns: repeat(auto-fit,minmax(160px,1fr)); }
+.towpath-modal__footer { flex: 0 0 auto; padding: 13px clamp(30px,5vw,68px); border-top: 1px solid rgba(234,215,172,.16); color: #cfc2a7; font-size: 12px; line-height: 1.7; }
+@media (max-width: 760px) { .towpath-modal__intro { grid-template-columns: 1fr; } .towpath-modal__intro img { max-height: 180px; } .towpath-modal__dialogue { grid-template-columns: 80px minmax(0,1fr) 80px; gap: 12px; } .towpath-modal__dialogue img { max-height: 210px; } .towpath-modal__actions { grid-template-columns: 1fr; } }
+@keyframes towpath-next-pulse { 0%, 100% { opacity: .64; } 50% { opacity: 1; } }
+
+/* 第四章：沿用第三章的单次自动横向长卷浏览 */
+.chapter-four { position: relative; flex: 1 1 auto; min-width: 0; min-height: 0; overflow: hidden; background: #d4c8b1; }
+.chapter-four__scene { position: relative; width: 100%; height: 100%; overflow: hidden; cursor: ew-resize; touch-action: none; user-select: none; }
+.chapter-four__track { position: absolute; top: 0; will-change: transform; }
+.chapter-four__art { display: block; width: 100%; height: 100%; max-width: none; max-height: none; pointer-events: none; -webkit-user-drag: none; }
+.chapter-four__hotspots { position: absolute; z-index: 4; inset: 0; pointer-events: none; }
+.chapter-four__hotspot { position: absolute; display: grid; width: 18px; height: 18px; place-items: center; padding: 0; border: 1px solid rgba(255,255,255,.96); border-radius: 50%; background: rgba(255,255,255,.2); box-shadow: 0 0 9px rgba(255,255,255,.56); color: #fff; cursor: pointer; pointer-events: auto; transform: translate(-50%,-50%) scale(1); animation: chapter-four-hotspot-breathe 1.2s ease-in-out infinite; }
+.chapter-four__hotspot::after { width: 4px; height: 4px; border-radius: 50%; background: currentColor; content: ""; }
+.chapter-four__hotspot:hover, .chapter-four__hotspot:focus-visible { background: rgba(255,255,255,.42); outline: none; }
+.chapter-four__hotspot-tooltip { position: absolute; z-index: 5; width: min(240px, 30vw); margin: 0; padding: 8px 11px; border: 1px solid rgba(111,83,55,.24); background: rgba(239,228,203,.78); color: #4c392a; font-family: "Songti SC", SimSun, serif; font-size: clamp(13px,.95vw,16px); font-weight: 500; letter-spacing: .04em; line-height: 1.55; opacity: 0; pointer-events: none; text-align: left; text-shadow: none; transform: translate(18px, calc(-100% - 13px)); transition: opacity .22s ease, transform .22s ease; }
+.chapter-four__hotspot--temple:hover + .chapter-four__hotspot-tooltip, .chapter-four__hotspot--temple:focus-visible + .chapter-four__hotspot-tooltip { opacity: 1; transform: translate(18px, calc(-100% - 18px)); }
+.chapter-four__hotspot--temple { border-color: rgba(209,143,62,.95); background: rgba(173,64,38,.44); box-shadow: 0 0 11px rgba(190,91,42,.74); color: #f1c578; animation-name: chapter-four-temple-breathe; }
+.chapter-four__hotspot.is-active { border-color: rgba(255,255,255,.96); background: rgba(255,255,255,.22); box-shadow: 0 0 15px rgba(255,255,255,.8); color: #fff; animation-name: chapter-four-hotspot-breathe; }
+.chapter-four__dim { position: absolute; z-index: 3; inset: 0; width: 100%; height: 100%; border: 0; background: rgba(39,29,20,.54); cursor: pointer; -webkit-mask-image: radial-gradient(ellipse var(--chapter-four-focus-rx) var(--chapter-four-focus-ry) at var(--chapter-four-focus-x) var(--chapter-four-focus-y), transparent 0, transparent 44%, rgba(0,0,0,.18) 63%, #000 100%); mask-image: radial-gradient(ellipse var(--chapter-four-focus-rx) var(--chapter-four-focus-ry) at var(--chapter-four-focus-x) var(--chapter-four-focus-y), transparent 0, transparent 44%, rgba(0,0,0,.18) 63%, #000 100%); }
+.chapter-four__note { position: absolute; z-index: 5; right: clamp(30px,6vw,120px); bottom: clamp(42px,8vh,100px); width: min(390px,34vw); margin: 0; color: #f7efd9; text-shadow: 0 1px 3px rgba(30,22,16,.92), 0 0 14px rgba(30,22,16,.46); }
+.chapter-four__note h2 { margin: 0 0 14px; font-size: clamp(18px,1.5vw,24px); font-weight: 500; letter-spacing: .14em; }
+.chapter-four__note p { margin: 0; font-size: clamp(14px,1vw,16px); line-height: 1.9; text-align: justify; }
+.chapter-four__story { position: absolute; z-index: 5; inset: 0; color: #f7efd9; pointer-events: none; text-shadow: 0 1px 3px rgba(30,22,16,.94), 0 0 16px rgba(30,22,16,.56); transition: opacity .45s ease; }
+.chapter-four__story.is-fading { opacity: 0; }
+.chapter-four__story-portraits { position: absolute; inset: 0; }
+.chapter-four__story-portrait { position: absolute; bottom: 0; display: block; width: auto; height: min(64vh, 680px); object-fit: contain; filter: brightness(.72) drop-shadow(0 8px 12px rgba(30,22,16,.3)); opacity: .4; transform: scale(.92); transform-origin: bottom center; transition: opacity .32s ease, filter .32s ease, transform .32s ease; }
+.chapter-four__story-portrait--merchant { left: clamp(18px,4.5vw,100px); animation: chapter-four-portrait-enter-left .62s cubic-bezier(.2,.72,.24,1); }
+.chapter-four__story-portrait--official, .chapter-four__story-portrait--scholar { right: clamp(18px,4.5vw,100px); animation: chapter-four-portrait-enter-right .62s cubic-bezier(.2,.72,.24,1); }
+.chapter-four__story-portrait--scholar { height: min(66vh, 700px); }
+.chapter-four__story-portrait.is-speaking { filter: drop-shadow(0 9px 16px rgba(30,22,16,.48)) brightness(1.13); opacity: 1; transform: scale(1.06); }
+.chapter-four__story-portrait--scholar.is-speaking { transform: translateY(2px) scale(1.065); }
+.chapter-four__story-copy { position: absolute; right: 50%; bottom: clamp(58px,10vh,132px); width: min(43vw, 680px); transform: translateX(50%); }
+.chapter-four__story-copy p { margin: 0; font-family: "Songti SC", SimSun, serif; font-size: clamp(18px,1.5vw,25px); line-height: 1.82; text-align: justify; }
+.chapter-four__story-copy .chapter-four__story-speaker { margin-bottom: 9px; color: #eed39a; font-size: clamp(16px,1.25vw,20px); letter-spacing: .18em; }
+.chapter-four__story-copy.is-updating { animation: chapter-four-copy-fade .26s ease both; }
+.chapter-four__story-copy--reveal { bottom: clamp(120px,22vh,260px); width: min(48vw, 800px); text-align: center; }
+.chapter-four__story-copy--reveal p { text-align: center; }
+.chapter-four__guide { position: absolute; z-index: 2; bottom: 18px; left: 50%; margin: 0; color: rgba(247,239,217,.9); font-family: "Songti SC", SimSun, serif; font-size: clamp(14px,1vw,17px); letter-spacing: .1em; text-shadow: 0 1px 3px rgba(30,22,16,.9); transform: translateX(-50%); white-space: nowrap; pointer-events: none; }
+.chapter-four__next { position: absolute; z-index: 6; right: clamp(24px,4vw,68px); bottom: clamp(24px,5vh,60px); padding: 10px 20px; cursor: pointer; }
+.chapter-four__hint { position: absolute; z-index: 1; right: clamp(22px,4vw,72px); bottom: 18px; margin: 0; padding: 6px 10px; background: rgba(243,235,217,.6); color: rgba(82,62,46,.82); font-size: 12px; letter-spacing: .1em; pointer-events: none; }
+.chapter-four__dim[hidden], .chapter-four__note[hidden], .chapter-four__story[hidden], .chapter-four__guide[hidden] { display: none; }
+@keyframes chapter-four-hotspot-breathe { 0%, 100% { background: rgba(255,255,255,.13); box-shadow: 0 0 5px rgba(255,255,255,.3); opacity: .68; transform: translate(-50%,-50%) scale(.82); } 50% { background: rgba(255,255,255,.52); box-shadow: 0 0 15px rgba(255,255,255,.82); opacity: 1; transform: translate(-50%,-50%) scale(1.48); } }
+@keyframes chapter-four-temple-breathe { 0%, 100% { background: rgba(173,64,38,.3); box-shadow: 0 0 6px rgba(190,91,42,.4); opacity: .76; transform: translate(-50%,-50%) scale(.86); } 50% { background: rgba(202,112,48,.72); box-shadow: 0 0 17px rgba(224,153,74,.8); opacity: 1; transform: translate(-50%,-50%) scale(1.46); } }
+@keyframes chapter-four-portrait-enter-left { from { opacity: 0; transform: translate(-7vw,6vh) scale(.9); } to { opacity: .4; transform: translate(0,0) scale(.92); } }
+@keyframes chapter-four-portrait-enter-right { from { opacity: 0; transform: translate(7vw,6vh) scale(.9); } to { opacity: .4; transform: translate(0,0) scale(.92); } }
+@keyframes chapter-four-copy-fade { from { opacity: .12; } to { opacity: 1; } }
+@media (max-width: 900px) { .chapter-four__note { right: 24px; bottom: 48px; width: min(420px,calc(100vw - 48px)); } }
+
+/* 第四章：牌楼与街市建筑群内的可操作街市漫游。 */
+.street-market { position: absolute; z-index: 20; inset: 0; overflow: hidden; background: #cfc3a8; color: #f7eedb; font-family: "Songti SC", SimSun, serif; user-select: none; }
+.street-market[hidden] { display: none; }
+.street-market__canvas { display: block; width: 100%; height: 100%; cursor: crosshair; touch-action: none; }
+.street-market__header { position: absolute; z-index: 2; top: clamp(14px,2.5vh,30px); left: clamp(18px,3.4vw,60px); right: clamp(18px,3.4vw,60px); display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; pointer-events: none; text-shadow: 0 1px 5px rgba(28,20,13,.82); }
+.street-market__header p, .street-market__header h1 { margin: 0; }
+.street-market__eyebrow { color: rgba(245,225,174,.86); font-size: clamp(11px,.8vw,14px); letter-spacing: .23em; }
+.street-market__header h1 { margin-top: 4px; font-size: clamp(21px,1.8vw,31px); font-weight: 500; letter-spacing: .16em; }
+.street-market__header-actions { display: flex; gap: 9px; pointer-events: auto; }
+.street-market__header button, .street-market__dialogue button { border: 1px solid rgba(244,228,190,.55); background: rgba(56,42,30,.72); color: #f8edcf; font: inherit; font-size: clamp(12px,.9vw,15px); letter-spacing: .1em; cursor: pointer; transition: transform .2s ease, background-color .2s ease; }
+.street-market__header button { padding: 8px 12px; }
+.street-market__header button:hover, .street-market__header button:focus-visible, .street-market__dialogue button:hover, .street-market__dialogue button:focus-visible { background: rgba(91,66,43,.92); outline: none; transform: translateY(-2px); }
+.street-market__records-button span { display: inline-grid; min-width: 1.3em; place-items: center; margin-left: 4px; color: #ecd08c; }
+.street-market__help, .street-market__prompt { position: absolute; z-index: 2; bottom: 19px; left: 50%; margin: 0; padding: 7px 12px; color: rgba(69,49,33,.92); background: rgba(241,231,206,.76); font-size: clamp(12px,.85vw,15px); letter-spacing: .08em; transform: translateX(-50%); box-shadow: 0 1px 6px rgba(43,30,18,.2); pointer-events: none; white-space: nowrap; }
+.street-market__prompt { bottom: 62px; color: #f8edcf; background: rgba(69,45,29,.78); animation: street-market-prompt 1.5s ease-in-out infinite; }
+.street-market__records { position: absolute; z-index: 4; top: clamp(68px,11vh,104px); right: clamp(18px,3.4vw,60px); width: min(370px,calc(100vw - 36px)); max-height: min(66vh,600px); overflow: auto; padding: 18px 20px; border: 1px solid rgba(93,67,42,.58); background: rgba(232,219,186,.94); color: #443124; box-shadow: 0 9px 24px rgba(31,22,15,.3); }
+.street-market__records header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(93,67,42,.35); padding-bottom: 8px; }
+.street-market__records header p { margin: 0; font-size: 19px; letter-spacing: .15em; }
+.street-market__records header button { border: 0; background: transparent; color: #503927; cursor: pointer; font-size: 25px; line-height: 1; }
+.street-market__records ul { display: grid; gap: 13px; margin: 16px 0 0; padding: 0; list-style: none; }
+.street-market__records li { display: grid; gap: 5px; }
+.street-market__records strong { font-size: 16px; font-weight: 600; letter-spacing: .08em; }
+.street-market__records span, .street-market__records-empty { font-size: 14px; line-height: 1.7; }
+.street-market__dialogue { position: absolute; z-index: 4; left: 50%; bottom: clamp(42px,8vh,94px); width: min(590px,calc(100vw - 46px)); padding: clamp(20px,2.4vw,32px) clamp(23px,3vw,42px); border: 1px solid rgba(92,65,41,.62); background: rgba(234,222,192,.94); color: #463224; box-shadow: 0 10px 34px rgba(27,20,14,.34); transform: translateX(-50%); animation: street-market-dialogue-in .25s ease both; }
+.street-market__dialogue-kicker { margin: 0 0 6px; color: #8b6040; font-size: 13px; letter-spacing: .18em; }
+.street-market__dialogue h2 { margin: 0 0 13px; font-size: clamp(21px,1.7vw,29px); font-weight: 500; letter-spacing: .13em; }
+.street-market__dialogue-body { margin: 0; font-size: clamp(16px,1.18vw,19px); line-height: 1.9; text-align: justify; }
+.street-market__dialogue-next { margin: 16px 0 0; color: rgba(75,53,35,.72); font-size: 13px; letter-spacing: .12em; }
+.street-market__dialogue-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.street-market__dialogue button { padding: 9px 15px; border-color: rgba(80,57,39,.72); background: rgba(75,53,37,.92); }
+@keyframes street-market-dialogue-in { from { opacity: 0; transform: translate(-50%,10px); } to { opacity: 1; transform: translate(-50%,0); } }
+@keyframes street-market-prompt { 0%,100% { opacity: .74; } 50% { opacity: 1; } }
+@media (max-width: 720px) { .street-market__header { align-items: center; } .street-market__header-actions { gap: 5px; } .street-market__header button { padding: 7px 8px; } .street-market__help { max-width: calc(100vw - 32px); overflow: hidden; text-overflow: ellipsis; } }
+
+/* 第五章：以选择汇聚的互动结局。 */
+.chapter-five { position: relative; flex: 1 1 auto; min-width: 0; min-height: 0; overflow: hidden; background: #cfc4ad; }
+.chapter-five__stage { position: relative; width: 100%; height: 100%; overflow: hidden; isolation: isolate; }
+.chapter-five__art { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center; background: #cfc4ad; transition: opacity .45s ease; }
+.chapter-five__veil { position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgba(236,226,201,.48) 0%, rgba(236,226,201,.22) 42%, rgba(42,33,24,.16) 100%); pointer-events: none; }
+.chapter-five__content { position: absolute; inset: 0; color: #3e2d20; font-family: "Songti SC", SimSun, serif; text-shadow: 0 1px 0 rgba(250,245,230,.42); }
+.chapter-five__opening-copy { position: absolute; top: clamp(42px,8vh,92px); left: clamp(34px,7vw,145px); width: min(45vw,690px); padding: clamp(21px,2.6vw,38px) clamp(24px,3vw,46px); background: rgba(244,237,218,.58); border-inline-start: 2px solid rgba(75,53,35,.55); animation: chapter-five-fade .72s ease both; }
+.chapter-five__eyebrow { margin: 0 0 16px; color: #4b3020; font-size: clamp(17px,1.28vw,22px); font-weight: 700; letter-spacing: .16em; }
+.chapter-five__opening-copy p:not(.chapter-five__eyebrow) { margin: 0; color: #39261b; font-size: clamp(19px,1.48vw,24px); font-weight: 600; line-height: 1.86; text-align: justify; }
+.chapter-five__opening-copy p + p { margin-top: 1em; }
+.chapter-five__opening-action { margin-top: clamp(42px,6vh,68px); }
+.chapter-five__begin { position: static; right: auto; bottom: auto; padding: 12px 29px; border-width: 1px; background: rgba(72,49,32,.94); color: #fff3d9; font-size: clamp(16px,1.05vw,18px); cursor: pointer; }
+.chapter-five__choices { position: absolute; top: 50%; left: clamp(34px,8vw,155px); width: min(43vw,650px); transform: translateY(-50%); text-align: left; animation: chapter-five-choice-fade .5s ease both; }
+.chapter-five__choices h1 { margin: 0; max-width: 640px; color: #3a261a; font-size: clamp(27px,2.15vw,38px); font-weight: 700; line-height: 1.48; letter-spacing: .07em; }
+.chapter-five__choice-list { display: grid; grid-template-columns: 1fr; gap: clamp(11px,1.6vw,18px); margin-top: clamp(24px,4vh,44px); max-width: 510px; }
+.chapter-five__choice-list button, .chapter-five__quiet-button { min-height: 76px; padding: 17px 21px; border: 1px solid rgba(87,59,37,.78); background: rgba(247,240,223,.97); color: #302016; font: inherit; font-size: clamp(20px,1.48vw,24px); font-weight: 800; line-height: 1.5; letter-spacing: .065em; cursor: pointer; transition: background-color .2s ease, color .2s ease, transform .2s ease; }
+.chapter-five__choice-list button:hover, .chapter-five__choice-list button:focus-visible, .chapter-five__quiet-button:hover, .chapter-five__quiet-button:focus-visible { background: rgba(83,58,38,.92); color: #fbf0d6; outline: none; transform: translateY(-3px); }
+.chapter-five__ending-copy { position: absolute; top: 50%; width: min(46vw,670px); padding: clamp(22px,2.8vw,42px); background: rgba(241,233,214,.48); animation: chapter-five-ending-fade .65s ease both; transform: translateY(-50%); }
+.chapter-five__ending-copy--one { left: clamp(32px,7vw,150px); }
+.chapter-five__ending-copy--two { right: clamp(32px,7vw,150px); }
+.chapter-five__ending-copy--three { left: clamp(32px,7vw,150px); }
+.chapter-five__ending-copy h1 { margin: 0 0 17px; font-size: clamp(26px,2.25vw,38px); font-weight: 500; letter-spacing: .12em; }
+.chapter-five__ending-copy p { margin: 0; font-size: clamp(16px,1.2vw,19px); line-height: 1.82; text-align: justify; }
+.chapter-five__ending-copy p + p { margin-top: .72em; }
+.chapter-five__ending-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(18px,3vh,29px); }
+.chapter-five__quiet-button { min-height: auto; padding: 9px 15px; font-size: 15px; }
+.chapter-five__final-button { position: static; right: auto; bottom: auto; padding: 10px 18px; cursor: pointer; }
+.chapter-five__final-title, .chapter-five__final-copy { position: absolute; top: 49%; left: clamp(34px,8vw,155px); width: min(68vw,1050px); transform: translateY(-50%); color: #39261b; text-align: left; animation: chapter-five-final-fade 1s ease both; }
+.chapter-five__final-title h1, .chapter-five__final-copy h1 { margin: 0; font-size: clamp(38px,4vw,66px); font-weight: 800; letter-spacing: .1em; line-height: 1.18; white-space: nowrap; }
+.chapter-five__final-title p { margin: 20px 0 0; font-size: clamp(19px,1.55vw,26px); font-weight: 600; letter-spacing: .14em; }
+.chapter-five__final-copy h1 { margin-bottom: 28px; font-size: clamp(26px,2.5vw,42px); }
+.chapter-five__final-copy p { margin: 0; font-size: clamp(20px,1.58vw,26px); font-weight: 600; line-height: 1.9; letter-spacing: .07em; }
+.chapter-five__final-copy p + p { margin-top: .85em; }
+@keyframes chapter-five-fade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes chapter-five-ending-fade { from { opacity: 0; transform: translateY(calc(-50% + 12px)); } to { opacity: 1; transform: translateY(-50%); } }
+@keyframes chapter-five-choice-fade { from { opacity: 0; transform: translateY(calc(-50% + 12px)); } to { opacity: 1; transform: translateY(-50%); } }
+@keyframes chapter-five-final-fade { from { opacity: 0; transform: translateY(calc(-50% + 12px)); } to { opacity: 1; transform: translateY(-50%); } }
+@media (max-width: 820px) { .chapter-five__opening-copy, .chapter-five__choices { left: 27px; width: min(620px,calc(100vw - 54px)); } .chapter-five__final-title, .chapter-five__final-copy { left: 27px; width: calc(100vw - 54px); } .chapter-five__final-title h1, .chapter-five__final-copy h1 { font-size: clamp(30px,8vw,48px); } .chapter-five__choice-list { margin-top: 22px; } .chapter-five__choice-list button { min-height: 64px; } .chapter-five__ending-copy { right: 26px; left: 26px; width: auto; max-height: calc(100% - 52px); overflow: auto; } }
+
+/* 章节衔接入口：统一为低饱和的古籍式按钮。 */
+.chapter-continue, .chapter-two__next, .chapter-three__next { border: 1px solid rgba(80,57,39,.72); background: rgba(75,53,37,.9); color: #f5ead5; font-family: "Songti SC", SimSun, serif; font-size: clamp(15px,1.1vw,17px); letter-spacing: .16em; box-shadow: 0 2px 7px rgba(35,25,17,.18); transition: background-color .22s ease, color .22s ease, transform .22s ease, box-shadow .22s ease; }
+.chapter-continue:not([hidden]), .chapter-two__next:not([hidden]), .chapter-three__next:not([hidden]) { animation: chapter-next-gentle 3.6s ease-in-out infinite; }
+.chapter-continue:hover, .chapter-continue:focus-visible, .chapter-two__next:hover, .chapter-two__next:focus-visible, .chapter-three__next:hover, .chapter-three__next:focus-visible { background: rgba(111,78,53,.96); color: #fff8e8; box-shadow: 0 5px 12px rgba(35,25,17,.26); outline: none; transform: translateY(-2px); }
+@keyframes chapter-next-gentle { 0%, 100% { box-shadow: 0 2px 7px rgba(35,25,17,.18); } 50% { box-shadow: 0 3px 10px rgba(98,71,47,.34); } }

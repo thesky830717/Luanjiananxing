@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="《乾隆南巡图》第三章：御道之下">
+    <title>叁｜御道之下｜乾隆南巡图</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/main.js" defer></script>
+    <script src="../js/chapter-3.js" defer></script>
+  </head>
+  <body data-page="chapter-3" data-root="..">
+    <div class="site-shell">
+      <header class="site-header" data-site-header></header>
+      <main class="chapter-three" data-chapter-three>
+        <section class="chapter-three__scene" data-chapter-three-scene aria-label="第三章长卷浏览区域">
+          <div class="chapter-three__track" data-chapter-three-track>
+            <img class="chapter-three__art" data-chapter-three-art src="../章节说明/第三章/2.jpg" alt="乾隆南巡图第三章长卷">
+            <div class="chapter-three__hotspots" data-chapter-three-hotspots aria-label="第三章互动热点"></div>
+          </div>
+          <button class="chapter-three__dim" data-chapter-three-dim type="button" aria-label="推进或关闭当前说明" hidden></button>
+          <aside class="chapter-three__note" data-chapter-three-note role="dialog" aria-modal="true" aria-live="polite" hidden></aside>
+          <div class="chapter-three__video" data-chapter-three-video hidden>
+            <video data-chapter-three-video-player controls playsinline preload="metadata" src="../章节说明/第三章/皇船视频替换.mp4"></video>
+            <p data-chapter-three-video-status hidden></p>
+          </div>
+          <p class="chapter-three__hint">长按画面，加速浏览长卷</p>
+          <button class="chapter-three__next" data-chapter-three-next type="button" hidden>进入第四章</button>
+          <section class="towpath-modal" data-towpath-modal role="dialog" aria-modal="true" aria-labelledby="towpath-modal-title" hidden>
+            <div class="towpath-modal__surface">
+              <button class="towpath-modal__close" data-towpath-close type="button" aria-label="关闭南巡挽纤说明">×</button>
+              <header class="towpath-modal__header">
+                <p class="towpath-modal__eyebrow">南巡舟行，牵挽之间，藏着民生与官场的权衡</p>
+                <h2 id="towpath-modal-title">南巡挽纤：嘏须纤</h2>
+                <nav class="towpath-modal__progress" aria-label="阅读进度" data-towpath-progress></nav>
+              </header>
+              <div class="towpath-modal__content" data-towpath-content></div>
+              <footer class="towpath-modal__footer">乾隆南巡沿运河水路行进，御舟依靠纤夫牵引前行，这件差事背后，是地方官难以抉择的难题。</footer>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

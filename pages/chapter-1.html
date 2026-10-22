@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="《乾隆南巡图》第一章：銮驾南行">
+    <title>壹｜銮驾南行｜乾隆南巡图</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/main.js" defer></script>
+  </head>
+  <body data-page="chapter-1" data-root="..">
+    <div class="site-shell">
+      <header class="site-header" data-site-header></header>
+      <main class="chapter-page">
+        <aside class="mounting-panel mounting-panel--left" aria-label="章节题签">
+          <p class="scroll-title">銮驾南行·盛世序幕</p>
+        </aside>
+        <figure class="painting-frame" data-chapter-interaction>
+          <div class="painting-stage" data-painting-stage data-phase="explore" aria-label="第一章原画互动区域">
+            <img class="chapter-artwork" data-artwork src="../原画素材/第一章.jpg" alt="乾隆南巡画卷第一章场景，画面中可见桥上仪仗与沿岸人物">
+            <div class="hotspot-layer" data-hotspot-layer aria-label="人物探索热点">
+              <button class="painting-hotspot" type="button" data-hotspot="emperor" aria-label="探索皇帝人物"><span>皇帝</span></button>
+              <button class="painting-hotspot" type="button" data-hotspot="official" aria-label="探索官员人物"><span>官员</span></button>
+              <button class="painting-hotspot" type="button" data-hotspot="commoner" aria-label="探索百姓人物"><span>百姓</span></button>
+              <button class="painting-hotspot painting-hotspot--archive" type="button" data-hotspot="archive" aria-label="查看仪仗档案" hidden><span>仪仗</span></button>
+            </div>
+            <button class="character-dim" type="button" data-empty-close aria-label="关闭当前文字" hidden></button>
+            <section class="character-panel" data-character-panel role="dialog" aria-modal="true" aria-label="人物独白" tabindex="-1" hidden>
+              <div data-character-copy></div>
+            </section>
+            <p class="archive-unlock-notice" data-unlock-notice role="status" hidden>仪仗档案已开启</p>
+            <button class="chapter-continue" type="button" data-chapter-continue hidden>进入第二章</button>
+          </div>
+        </figure>
+        <aside class="mounting-panel mounting-panel--right" aria-hidden="true"></aside>
+      </main>
+    </div>
+  </body>
+</html>

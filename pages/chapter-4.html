@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="《乾隆南巡图》第四章：繁华幕后">
+    <title>肆｜繁华幕后｜乾隆南巡图</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/main.js" defer></script>
+    <script src="../js/chapter-4.js" defer></script>
+    <script src="../js/street-market.js" defer></script>
+  </head>
+  <body data-page="chapter-4" data-root="..">
+    <div class="site-shell">
+      <header class="site-header" data-site-header></header>
+      <main class="chapter-four" data-chapter-four>
+        <section class="chapter-four__scene" data-chapter-four-scene aria-label="第四章长卷浏览区域">
+          <div class="chapter-four__track" data-chapter-four-track>
+            <img class="chapter-four__art" data-chapter-four-art src="../章节说明/第四章/背景图.jpg" alt="乾隆南巡图第四章长卷">
+            <div class="chapter-four__hotspots" data-chapter-four-hotspots aria-label="第四章互动热点"></div>
+          </div>
+          <button class="chapter-four__dim" data-chapter-four-dim type="button" aria-label="关闭当前说明" hidden></button>
+          <aside class="chapter-four__note" data-chapter-four-note aria-live="polite" hidden></aside>
+          <aside class="chapter-four__story" data-chapter-four-story aria-live="polite" hidden></aside>
+          <p class="chapter-four__guide" data-chapter-four-guide hidden></p>
+          <button class="chapter-four__next chapter-continue" data-chapter-four-next type="button" hidden>继续补全长卷</button>
+          <p class="chapter-four__hint">长按画面，加速浏览长卷</p>
+        </section>
+        <section class="street-market" data-street-market aria-label="街市漫游" hidden>
+          <canvas class="street-market__canvas" data-street-market-canvas aria-label="街市漫游场景"></canvas>
+          <header class="street-market__header">
+            <div>
+              <p class="street-market__eyebrow">銮驾南行</p>
+              <h1>街市漫游</h1>
+            </div>
+            <div class="street-market__header-actions">
+              <button class="street-market__records-button" data-street-market-records type="button">街市见闻 <span data-street-market-record-count>0</span></button>
+              <button class="street-market__exit" data-street-market-exit type="button">返回画卷</button>
+            </div>
+          </header>
+          <p class="street-market__help" data-street-market-help>WASD / 方向键移动 · 靠近对象后按 E 交互 · Esc 返回</p>
+          <p class="street-market__prompt" data-street-market-prompt hidden></p>
+          <aside class="street-market__records" data-street-market-records-panel hidden aria-label="街市见闻记录"></aside>
+          <aside class="street-market__dialogue" data-street-market-dialogue hidden aria-live="polite"></aside>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
